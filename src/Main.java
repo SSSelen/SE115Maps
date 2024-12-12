@@ -47,10 +47,11 @@ public class Main {
             }
         }
 
-        /*Formatter f = null;
+        Formatter f = null;
         try {
-            f = new Formatter("people2.txt");
-            f.format("%s, %s\n", name, email);
+            f = new Formatter("src/deneme.txt");
+            r = rd.nextInt();
+            f.format("%d", r);
         } catch (Exception e) {
             System.err.println("Something went wrong.");
         } finally {
@@ -58,9 +59,10 @@ public class Main {
                 f.close();
             }
         }
-*/
 
-        Formatter f = null;
+
+        /*Formatter f = null;
+
         FileWriter fw = null;
         try {
         fw = new FileWriter("src/deneme.txt", true);
@@ -75,7 +77,7 @@ public class Main {
         f.close();
         }
         }
-
+        */
 
     }
 }
