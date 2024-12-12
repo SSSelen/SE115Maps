@@ -8,14 +8,37 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner reader = null;
         try {
-            Scanner reader = new Scanner(Paths.get("deneme.txt"));
-            System.out.println("File read is successful!");
-        } catch (IOException x){
-            System.out.println("<File line number> <Error description>" + x.getMessage());
-        }finally{
-            if(reader != null){
+            reader = new Scanner(Paths.get("src/deneme.txt"));
+            int line = 0;
+            while (reader.hasNextLine()) {
+                reader.nextLine();
+                line++;
+            }
             reader.close();
+
+            reader = new Scanner(Paths.get("src/deneme.txt"));
+
+            String[] linearray = new String[line];
+
+            int index = 0;
+            while (reader.hasNextLine()) {
+                linearray[index] = reader.nextLine();
+                index++;
+            }
+
+
+            System.out.println("File read is successful!");
+            for (int i = 0; i < linearray.length; i++) {
+                System.out.println(linearray[i]);
+            }
+
+        } catch (IOException x) {
+            System.err.println("<File line number> <Error description>" + x.getMessage());
+        } finally {
+            if (reader != null) {
+                reader.close();
             }
         }
     }
