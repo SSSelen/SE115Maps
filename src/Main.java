@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.nio.file.Paths;
 import java.io.IOException;
+import java.util.Formatter;
+import java.io.FileWriter;
+import java.util.Random;
 //import java.io.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -9,6 +12,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         Scanner reader = null;
+        Random rd = new Random();
+        int r = 0;
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
             int line = 0;
@@ -41,5 +46,36 @@ public class Main {
                 reader.close();
             }
         }
+
+        /*Formatter f = null;
+        try {
+            f = new Formatter("people2.txt");
+            f.format("%s, %s\n", name, email);
+        } catch (Exception e) {
+            System.err.println("Something went wrong.");
+        } finally {
+            if (f != null) {
+                f.close();
+            }
+        }
+*/
+
+        Formatter f = null;
+        FileWriter fw = null;
+        try {
+        fw = new FileWriter("src/deneme.txt", true);
+        f = new Formatter(fw);
+        r = rd.nextInt();
+        f.format("%d", r);
+        fw.close();
+        } catch (Exception e) {
+        System.err.println("Something went wrong.");
+        } finally {
+        if (f != null) {
+        f.close();
+        }
+        }
+
+
     }
 }
