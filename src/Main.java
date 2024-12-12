@@ -11,8 +11,12 @@ public class Main {
         try {
             Scanner reader = new Scanner(Paths.get("deneme.txt"));
             System.out.println("File read is successful!");
-        } (IOException x){
-            System.out.println("<File line number> <Error description>" + x.getFile());
+        } catch (IOException x){
+            System.out.println("<File line number> <Error description>" + x.getMessage());
+        }finally{
+            if(reader != null){
+            reader.close();
+            }
         }
     }
 }
