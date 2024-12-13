@@ -1,21 +1,16 @@
 public class City {
-    String city;
-    int road;
-    int minute;
+    private String cityname;
+    private int road;
+    private int minute;
 
-
-        private String title;
-        private String author;
-        private double price;
-
-        public Book(String title, String author, double price){
-            this.title=title;
-            this.author=author;
-            this.price=price;
+        public City(String cityname, int road, int minute){
+            this.cityname=cityname;
+            this.road=road;
+            this.minute=minute;
         }
 
         public String getCity(){
-            return city;
+            return cityname;
         }
         public int getRoad(){
             return road;
@@ -25,7 +20,7 @@ public class City {
         }
 
         public String setCity(){
-            return this.city;
+            return this.cityname;
         }
         public int setRoad(){
             return this.road;
@@ -34,9 +29,9 @@ public class City {
             return this.minute;
         }
 
-        public void displayBookInfo(){
-            System.out.println("City: "+city+"Road: "+road+ "Minute: "+minute);
+        public void displayCityInfo(){
+            System.out.println("City: "+cityname+"Road: "+road+ "Minute: "+minute);
         }
     }
 
-}
+
