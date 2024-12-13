@@ -1,12 +1,14 @@
 public class City {
     private String cityname;
     private int road;
-    private int minute;
+    private int[] minute;
+    private int[] neighbourcount;
 
-        public City(String cityname, int road, int minute){
+        public City(String cityname, int road, int minute, int neighbourcount){
             this.cityname=cityname;
             this.road=road;
             this.minute=minute;
+            this.neighbourcount=neighbourcount;
         }
 
         public String getCity(){
