@@ -1,5 +1,24 @@
 public class City {
-    private String cityname;
+    private int citynumber;
+    public City(){
+        citynumber=0;
+    }
+
+    public City(int a){
+        this.citynumber=a;
+    }
+
+    public int getCityNumber(){
+        return citynumber;
+    }
+    public void  setCityNumber(int citynumber){
+        this.citynumber = citynumber;
+    }
+    public void displayCityInfo(){
+        System.out.println("City Number: "+citynumber);
+    }
+
+   /* private String cityname;
     private int road;
     private int[] minute;
     private int[] neighbourcount;
@@ -34,6 +53,8 @@ public class City {
         public void displayCityInfo(){
             System.out.println("City: "+cityname+"Road: "+road+ "Minute: "+minute);
         }
+
+    */
     }
 
 

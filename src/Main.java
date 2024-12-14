@@ -14,9 +14,19 @@ public class Main {
         Scanner reader = null;
         Random rd = new Random();
         int r = 0;
+        int citynumber = 0;
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
-            int line = 0;
+
+            if (reader.hasNextLine()) {
+                String firstLine = reader.nextLine();
+                citynumber = Integer.parseInt(firstLine);
+                City x1 = new City(citynumber);
+                x1.displayCityInfo();
+
+            }
+
+            int line = 1;
             while (reader.hasNextLine()) {
                 reader.nextLine();
                 line++;
@@ -39,14 +49,18 @@ public class Main {
                 System.out.println(linearray[i]);
             }
 
-        } catch (IOException x) {
-            System.err.println("<File line number> <Error description>" + x.getMessage());
+        } catch (IOException ErrorX) {
+            System.err.println("<File line number> <Error description>" + ErrorX.getMessage());
+        } catch  (NumberFormatException e){
+            System.err.println("Şehir sayısı 0.");
         } finally {
             if (reader != null) {
                 reader.close();
             }
         }
 
+        //write
+/*
         Formatter f = null;
         try {
             f = new Formatter("src/deneme.txt");
@@ -59,10 +73,11 @@ public class Main {
                 f.close();
             }
         }
+*/
 
 
-        /*Formatter f = null;
-
+        //append
+        Formatter f = null;
         FileWriter fw = null;
         try {
         fw = new FileWriter("src/deneme.txt", true);
@@ -77,7 +92,7 @@ public class Main {
         f.close();
         }
         }
-        */
+
 
     }
 }
