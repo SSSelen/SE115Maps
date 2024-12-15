@@ -24,16 +24,18 @@ public class CountryMap {
         if(citynumber<cities.length) {
             //city.add(city);
             //System.out.println(city.getCity() + " added.");
-            cities[citynumber] = city; 
+            cities[citynumber] = city;
             System.out.println(city.getCityName() + " added.");
             citynumber++;
         }
     }
     public void displayCountryMapInfo(){
         System.out.println("City Number: "+citynumber);
-        for(int i = 0; i <citynumber; i++){
+        /*for(int i = 0; i <citynumber; i++){
             String cityname = cities[i].cityname;
         }
+        */
+
     }
 
     /*

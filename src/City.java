@@ -1,25 +1,27 @@
+import java.util.Arrays;
 public class City {
 
 
     //aaaa her bir city için genel özellik (bbook)
    // private String cityname;
 
-    public String cityname;
+    public String[] cityname;
 
     public City(){
         cityname=null;
     }
 
-    public City(String a){
+    public City(String[] a){
         this.cityname=a;
     }
 
-    public String getCityName(){
+    public String[] getCityName(){
         return cityname;
     }
 
     public void displayCityInfo(){
-        System.out.println("Şehirke: "+cityname);
+
+        System.out.println("Şehirke: "+Arrays.toString(cityname));
     }
 
    /* private String cityname;

@@ -27,8 +27,11 @@ public class Main {
 
             }
             if(reader.hasNextLine()){
+
                 String isimler = reader.nextLine();
                 arr= isimler.split(" ");
+                City c1= new City(arr);
+                c1.displayCityInfo();
                 for(int i = 0; i<arr.length; i++){
                     System.out.println("Array "+(i+1)+" "+arr[i]);
                 }
