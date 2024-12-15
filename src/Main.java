@@ -36,7 +36,7 @@ public class Main {
                     System.out.println("Array "+(i+1)+" "+arr[i]);
                 }
             }
-            //ya da stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
+            //ya daa stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
 
             int line = 0;
             reader = new Scanner(Paths.get("src/deneme.txt"));

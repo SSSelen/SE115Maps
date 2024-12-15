@@ -23,7 +23,7 @@ public class City {
         //System.out.println("Şehir 1: "+Arrays.toString(cityname[0].toCharArray()));
         //System.out.println("Şehirke: "+Arrays.toString(cityname));
         if (cityname != null && cityname.length > 0) {
-            System.out.print("Şehirler: ");
+            System.out.print("Şehirlerd: ");
             for (int i = 0; i < cityname.length; i++) {
                 System.out.print(cityname[i]);
                 if (i < cityname.length - 1) {

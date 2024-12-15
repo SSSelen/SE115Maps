@@ -34,7 +34,7 @@ public class CountryMap {
         /*for(int i = 0; i <citynumber; i++){
             String[] cityname = cities[i].cityname;
         }
-hata veriyor
+hata veriyort
         */
     }
 
