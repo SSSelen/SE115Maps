@@ -1,21 +1,25 @@
 public class City {
-    private int citynumber;
+
+
+    //aaaa her bir city için genel özellik (bbook)
+   // private String cityname;
+
+    public String cityname;
+
     public City(){
-        citynumber=0;
+        cityname=null;
     }
 
-    public City(int a){
-        this.citynumber=a;
+    public City(String a){
+        this.cityname=a;
     }
 
-    public int getCityNumber(){
-        return citynumber;
+    public String getCityName(){
+        return cityname;
     }
-    public void  setCityNumber(int citynumber){
-        this.citynumber = citynumber;
-    }
+
     public void displayCityInfo(){
-        System.out.println("City Number: "+citynumber);
+        System.out.println("Şehirke: "+cityname);
     }
 
    /* private String cityname;

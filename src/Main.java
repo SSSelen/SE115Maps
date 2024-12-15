@@ -15,27 +15,37 @@ public class Main {
         Random rd = new Random();
         int r = 0;
         int citynumber = 0;
+        String[] arr = null;
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
 
             if (reader.hasNextLine()) {
                 String firstLine = reader.nextLine();
                 citynumber = Integer.parseInt(firstLine);
-                City x1 = new City(citynumber);
-                x1.displayCityInfo();
+                CountryMap x1 = new CountryMap(citynumber);
+                x1.displayCountryMapInfo();//citydi
 
             }
+            if(reader.hasNextLine()){
+                String isimler = reader.nextLine();
+                arr= isimler.split(" ");
+                for(int i = 0; i<arr.length; i++){
+                    System.out.println("Array "+(i+1)+" "+arr[i]);
+                }
+            }
+            //ya da stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
 
-            int line = 1;
+            int line = 0;
+            reader = new Scanner(Paths.get("src/deneme.txt"));
             while (reader.hasNextLine()) {
                 reader.nextLine();
                 line++;
             }
             reader.close();
 
-            reader = new Scanner(Paths.get("src/deneme.txt"));
 
             String[] linearray = new String[line];
+            reader = new Scanner(Paths.get("src/deneme.txt"));
 
             int index = 0;
             while (reader.hasNextLine()) {
