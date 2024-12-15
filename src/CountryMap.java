@@ -32,10 +32,10 @@ public class CountryMap {
     public void displayCountryMapInfo(){
         System.out.println("City Number: "+citynumber);
         /*for(int i = 0; i <citynumber; i++){
-            String cityname = cities[i].cityname;
+            String[] cityname = cities[i].cityname;
         }
+hata veriyor
         */
-
     }
 
     /*

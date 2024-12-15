@@ -1,4 +1,4 @@
-import java.util.Arrays;
+//import java.util.Arrays; görmemişiz?
 public class City {
 
 
@@ -20,8 +20,20 @@ public class City {
     }
 
     public void displayCityInfo(){
-
-        System.out.println("Şehirke: "+Arrays.toString(cityname));
+        //System.out.println("Şehir 1: "+Arrays.toString(cityname[0].toCharArray()));
+        //System.out.println("Şehirke: "+Arrays.toString(cityname));
+        if (cityname != null && cityname.length > 0) {
+            System.out.print("Şehirler: ");
+            for (int i = 0; i < cityname.length; i++) {
+                System.out.print(cityname[i]);
+                if (i < cityname.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        } else {
+            System.out.println("Şehirler: [Boş]");
+        }
     }
 
    /* private String cityname;
