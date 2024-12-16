@@ -14,6 +14,10 @@ public class Main {
         Scanner reader = null;
         Random rd = new Random();
         int r = 0;
+        String[] yol = null;
+        String city1 = null;
+        String city2 = null;
+        int dakika = 0;
         int citynumber = 0;
         String[] arr = null;
         try {
@@ -22,21 +26,35 @@ public class Main {
             if (reader.hasNextLine()) {
                 String firstLine = reader.nextLine();
                 citynumber = Integer.parseInt(firstLine);
-                CountryMap x1 = new CountryMap(citynumber);
-                x1.displayCountryMapInfo();//citydi
-
             }
-            if(reader.hasNextLine()){
 
+            CountryMap x1 = new CountryMap(citynumber);
+
+            if(reader.hasNextLine()){
                 String isimler = reader.nextLine();
                 arr= isimler.split(" ");
                 City c1= new City(arr);
                 c1.displayCityInfo();
-                for(int i = 0; i<arr.length; i++){
-                    System.out.println("Array "+(i+1)+" "+arr[i]);
-                }
+                //System.out.println("Array "+(i+1)+" "+arr[i]);
             }
             //ya daa stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
+            //string arr= parseInt.c.length();
+
+            if(reader.hasNextLine()){
+                int yolnumber = Integer.parseInt(reader.nextLine());
+                for(int i = 0; i<yolnumber; i++){
+                    if(reader.hasNextLine()){
+                        yol = reader.nextLine().split(" ");
+                        city1 = yol[0];
+                        city2 = yol[1];
+                        dakika = Integer.parseInt(yol[2]);
+                        countryMap.addInfo(city1, city2, dakika);
+                    }
+                }
+            }
+
+
+
 
             int line = 0;
             reader = new Scanner(Paths.get("src/deneme.txt"));
@@ -45,11 +63,8 @@ public class Main {
                 line++;
             }
             reader.close();
-
-
             String[] linearray = new String[line];
             reader = new Scanner(Paths.get("src/deneme.txt"));
-
             int index = 0;
             while (reader.hasNextLine()) {
                 linearray[index] = reader.nextLine();
@@ -58,9 +73,12 @@ public class Main {
 
 
             System.out.println("File read is successful!");
-            for (int i = 0; i < linearray.length; i++) {
+            /*for (int i = 0; i < linearray.length; i++) {
                 System.out.println(linearray[i]);
             }
+             */
+
+            x1.displayCountryMapInfo();//citydi
 
         } catch (IOException ErrorX) {
             System.err.println("<File line number> <Error description>" + ErrorX.getMessage());

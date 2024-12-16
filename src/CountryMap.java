@@ -5,30 +5,47 @@ public class CountryMap {
     private int citynumber;
     private City[] cities;
 
-    public CountryMap(){
-        citynumber=0;
-    }
-
     public CountryMap(int a){
-        cities = new City[citynumber];
         this.citynumber=a;
+        this.cities = new City[citynumber];
     }
 
-    public int getCityNumber(){
+    /*public int getCityNumber(){
         return citynumber;
     }
-    public void  setCityNumber(int citynumber){
-        this.citynumber = citynumber;
-    }
-    public void addCity(City city){
-        if(citynumber<cities.length) {
+     */
+
+    public void addCity(int a, String cityname){
+        /*if(citynumber<cities.length) {
             //city.add(city);
             //System.out.println(city.getCity() + " added.");
             cities[citynumber] = city;
             System.out.println(city.getCityName() + " added.");
             citynumber++;
+             }
+             */
+        cities[a] = new City(cityname, citynumber-1);
+    }
+
+    public City getCity(String cityname){
+        for(City city; city<cities; city++){
+            if (city.getCityName().equals(cityname)) {
+                return city;
+            }
+        }
+        return null;
+    }
+
+    public void addInfo(String city1name, String city2name, int dakika) {
+        City city1 = city1.getCityName(city1name);
+        City city2 = getCity(city2name);
+
+        if (city1 != null && city2 != null) {
+            city1.addKomsu(city2Name, dakika);
+            city2.addKomsu(city1Name, dakika);
         }
     }
+
     public void displayCountryMapInfo(){
         System.out.println("City Number: "+citynumber);
         /*for(int i = 0; i <citynumber; i++){

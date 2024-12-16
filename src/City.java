@@ -1,39 +1,44 @@
 //import java.util.Arrays; görmemişiz?
 public class City {
-
-
     //aaaa her bir city için genel özellik (bbook)
    // private String cityname;
 
-    public String[] cityname;
+    private String[] komsu;
+    private int komsunumber;
+    public String cityname;
+    private int[] dakika;
 
-    public City(){
-        cityname=null;
+    public City(String name, int neighbour){
+        this.cityname=name;
+        this.komsu = new String[neighbour];
+        this.komsunumber = 0;
+        this.dakika = new int[neighbour];
     }
 
-    public City(String[] a){
-        this.cityname=a;
-    }
-
-    public String[] getCityName(){
+    public String getCityName(){
         return cityname;
+    }
+
+    public int getKomsuNumber(){
+        return komsunumber;
+    }
+
+    public void addKomsu(String neighbour, int dakika){
+        komsu[komsunumber] = neighbour;
+        this.dakika[komsunumber] = dakika;
+        komsunumber++;
     }
 
     public void displayCityInfo(){
         //System.out.println("Şehir 1: "+Arrays.toString(cityname[0].toCharArray()));
         //System.out.println("Şehirke: "+Arrays.toString(cityname));
-        if (cityname != null && cityname.length > 0) {
-            System.out.print("Şehirlerd: ");
-            for (int i = 0; i < cityname.length; i++) {
-                System.out.print(cityname[i]);
-                if (i < cityname.length - 1) {
-                    System.out.print(", ");
-                }
-            }
-            System.out.println();
-        } else {
-            System.out.println("Şehirler: [Boş]");
+        // System.out.println(cityname[i]);
+
+        System.out.println("Komsşular: ");
+        for(int i = 0; i<komsunumber; i++){
+            System.out.println(komsu[i]+ " " + dakika[i]);
         }
+        System.out.println();
     }
 
    /* private String cityname;
