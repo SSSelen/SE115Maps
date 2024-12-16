@@ -33,9 +33,9 @@ public class Main {
             if(reader.hasNextLine()){
                 String isimler = reader.nextLine();
                 arr= isimler.split(" ");
-                City c1= new City(arr);
-                c1.displayCityInfo();
-                //System.out.println("Array "+(i+1)+" "+arr[i]);
+                for (int i = 0; i < arr.length; i++) {
+                    x1.addCity(i, arr[i]);
+                }
             }
             //ya daa stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
             //string arr= parseInt.c.length();
@@ -48,7 +48,8 @@ public class Main {
                         city1 = yol[0];
                         city2 = yol[1];
                         dakika = Integer.parseInt(yol[2]);
-                        countryMap.addInfo(city1, city2, dakika);
+
+                        x1.addInfo(city1, city2, dakika);
                     }
                 }
             }

@@ -15,6 +15,10 @@ public class City {
         this.dakika = new int[neighbour];
     }
 
+    public City(String[] arr) {
+        //maindeki arrda hata
+    }
+
     public String getCityName(){
         return cityname;
     }

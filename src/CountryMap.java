@@ -28,26 +28,29 @@ public class CountryMap {
     }
 
     public City getCity(String cityname){
-        for(City city; city<cities; city++){
-            if (city.getCityName().equals(cityname)) {
-                return city;
+        for(int i = 0; i<cities.length; i++){
+            if (cities[i].getCityName().equals(cityname)) {
+                return cities[i];
             }
         }
         return null;
     }
 
     public void addInfo(String city1name, String city2name, int dakika) {
-        City city1 = city1.getCityName(city1name);
+        City city1 = getCity(city1name);
         City city2 = getCity(city2name);
 
         if (city1 != null && city2 != null) {
-            city1.addKomsu(city2Name, dakika);
-            city2.addKomsu(city1Name, dakika);
+            city1.addKomsu(city2name, dakika);
+            city2.addKomsu(city1name, dakika);
         }
     }
 
     public void displayCountryMapInfo(){
         System.out.println("City Number: "+citynumber);
+        for(int i = 0; i <cities.length; i++){
+            cities[i].displayCityInfo();
+        }
         /*for(int i = 0; i <citynumber; i++){
             String[] cityname = cities[i].cityname;
         }
