@@ -1,6 +1,5 @@
 public class City {
-    //aaaa her bir city için genel özellik (bbook)
-   // private String cityname;
+    //book
 
     private String[] komsu;
     private int komsunumber;

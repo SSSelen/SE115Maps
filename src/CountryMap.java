@@ -1,6 +1,6 @@
 import java.util.*;
 public class CountryMap {
-    //tüm citylerin toplamı bura(library)
+    //library
 
     private int citynumber;
     private City[] cities;
@@ -10,20 +10,7 @@ public class CountryMap {
         this.cities = new City[citynumber];
     }
 
-    /*public int getCityNumber(){
-        return citynumber;
-    }
-     */
-
     public void addCity(int a, String cityname){
-        /*if(citynumber<cities.length) {
-            //city.add(city);
-            //System.out.println(city.getCity() + " added.");
-            cities[citynumber] = city;
-            System.out.println(city.getCityName() + " added.");
-            citynumber++;
-             }
-             */
         cities[a] = new City(cityname, citynumber-1);
     }
 
@@ -51,11 +38,10 @@ public class CountryMap {
         for(int i = 0; i <cities.length; i++){
             cities[i].displayCityInfo();
         }
-        /*
+
         for(int i = 0; i <citynumber; i++){
-            String[] cityname = cities[i].getCityName()cityname;
+            String cityname = cities[i].getCityName();
+            System.out.print(cityname +" ");
         }
-//hata veriyort
-*/
     }
 }
