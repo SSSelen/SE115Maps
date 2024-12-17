@@ -51,20 +51,11 @@ public class CountryMap {
         for(int i = 0; i <cities.length; i++){
             cities[i].displayCityInfo();
         }
-        /*for(int i = 0; i <citynumber; i++){
-            String[] cityname = cities[i].cityname;
+        /*
+        for(int i = 0; i <citynumber; i++){
+            String[] cityname = cities[i].getCityName()cityname;
         }
-hata veriyort
-        */
-    }
-
-    /*
-        private String libraryName;
-        public CountryMap(String libraryName){
-            this.libraryName=libraryName;
-        }
-        public void displayCountryMapInfo(){
-        }
-    }
+//hata veriyort
 */
+    }
 }

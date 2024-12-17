@@ -37,8 +37,6 @@ public class Main {
                     x1.addCity(i, arr[i]);
                 }
             }
-            //ya daa stringler[] = new String[ilk satır]; ve stringler[i] = isimler[i];
-            //string arr= parseInt.c.length();
 
             if(reader.hasNextLine()){
                 int yolnumber = Integer.parseInt(reader.nextLine());
@@ -53,7 +51,6 @@ public class Main {
                     }
                 }
             }
-
 
 
 
@@ -74,10 +71,6 @@ public class Main {
 
 
             System.out.println("File read is successful!");
-            /*for (int i = 0; i < linearray.length; i++) {
-                System.out.println(linearray[i]);
-            }
-             */
 
             x1.displayCountryMapInfo();//citydi
 
@@ -124,7 +117,5 @@ public class Main {
         f.close();
         }
         }
-
-
     }
 }
