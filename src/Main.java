@@ -10,7 +10,16 @@ import java.util.Random;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 public class Main {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) throws IOException {
+//throws kullanımı okey mi */
+public static void main(String[] args){
+
+
+    int line = 1; //ARRAYLERİ DE TANIMLASAM
+    String[] linearray = new String[line];
+    int index = 0;
+
+
         Scanner reader = null;
         Random rd = new Random();
         int r = 0;
@@ -20,6 +29,7 @@ public class Main {
         int dakika = 0;
         int citynumber = 0;
         String[] arr = null;
+
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
 
@@ -52,33 +62,35 @@ public class Main {
                 }
             }
 
-
-
-            int line = 0;
+            //int line =1;
             reader = new Scanner(Paths.get("src/deneme.txt"));
             while (reader.hasNextLine()) {
                 reader.nextLine();
                 line++;
             }
             reader.close();
-            String[] linearray = new String[line];
+            //String[] linearray = new String[line];
+            linearray = new String[line];
             reader = new Scanner(Paths.get("src/deneme.txt"));
-            int index = 0;
+            //int index = 0;
             while (reader.hasNextLine()) {
                 linearray[index] = reader.nextLine();
                 index++;
             }
 
 
+
+
             System.out.println("File read is successful!");
 
             x1.displayCountryMapInfo();//citydi
 
-        } catch (IOException ErrorX) {
-            System.err.println("<File line number> <Error description>" + ErrorX.getMessage());
-        } catch  (NumberFormatException e){
+        } catch (Exception ErrorX) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
+            System.err.println(linearray[index]+"<Line Number><Error description>" + ErrorX.getMessage());
+        } /*catch  (NumberFormatException e){
             System.err.println("Şehir sayısı 0.");
-        } finally {
+            //aynı dosya isminde var
+        } */finally {
             if (reader != null) {
                 reader.close();
             }
