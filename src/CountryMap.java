@@ -1,17 +1,21 @@
 import java.util.*;
 public class CountryMap {
     //library
-
+    private String[] citynameler;
     private int citynumber;
     private City[] cities;
 
     public CountryMap(int a){
         this.citynumber=a;
         this.cities = new City[citynumber];
+        this.citynameler = new String[citynumber];
+
     }
 
     public void addCity(int a, String cityname){
         cities[a] = new City(cityname, citynumber-1);
+        citynameler[a] = cityname;
+
     }
 
     public City getCity(String cityname){

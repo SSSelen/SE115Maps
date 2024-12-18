@@ -22,9 +22,11 @@ public class City {
     }
 
     public void addKomsu(String neighbour, int dakika){
+        //if(komsunumber<komsu.length
         komsu[komsunumber] = neighbour;
         this.dakika[komsunumber] = dakika;
         komsunumber++;
+        //}
     }
 
     public void displayCityInfo(){
@@ -35,5 +37,3 @@ public class City {
         System.out.println();
     }
 }
-
-

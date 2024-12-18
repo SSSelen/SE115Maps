@@ -12,13 +12,25 @@ import java.util.Random;
 public class Main {
     /*public static void main(String[] args) throws IOException {
 //throws kullanımı okey mi */
-public static void main(String[] args){
+    public static void main(String[] args){
 
+        /*if(args.length==0){
+            System.out.println("Error:1");
+            System.out.println("Usage");
+            return;
+        }
 
-    int line = 1; //ARRAYLERİ DE TANIMLASAM
-    String[] linearray = new String[line];
-    int index = 0;
+         */
 
+        int line = 1; //ARRAYLERİ DE TANIMLASAM
+        String[] linearray = new String[line];
+        int index = 0;
+
+        /*Scanner sc = new Scanner(System.in);
+        System.out.println("Entet file: ");
+        String filename = args[0];
+
+         */
 
         Scanner reader = null;
         Random rd = new Random();
@@ -32,7 +44,7 @@ public static void main(String[] args){
 
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
-
+            //reader = new Scanner(new File(filename));
             if (reader.hasNextLine()) {
                 String firstLine = reader.nextLine();
                 citynumber = Integer.parseInt(firstLine);
@@ -87,6 +99,7 @@ public static void main(String[] args){
 
         } catch (Exception ErrorX) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
             System.err.println(linearray[index]+"<Line Number><Error description>" + ErrorX.getMessage());
+            System.out.println(ErrorX.getStackTrace());
         } /*catch  (NumberFormatException e){
             System.err.println("Şehir sayısı 0.");
             //aynı dosya isminde var
@@ -117,17 +130,17 @@ public static void main(String[] args){
         Formatter f = null;
         FileWriter fw = null;
         try {
-        fw = new FileWriter("src/deneme.txt", true);
-        f = new Formatter(fw);
-        r = rd.nextInt();
-        f.format("%d", r);
-        fw.close();
+            fw = new FileWriter("src/deneme.txt", true);
+            f = new Formatter(fw);
+            r = rd.nextInt();
+            f.format("%d", r);
+            fw.close();
         } catch (Exception e) {
-        System.err.println("Something went wrong.");
+            System.err.println("Something went wrong.");
         } finally {
-        if (f != null) {
-        f.close();
-        }
+            if (f != null) {
+                f.close();
+            }
         }
     }
 }
