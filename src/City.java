@@ -21,19 +21,27 @@ public class City {
         return komsunumber;
     }
 
-    public void addKomsu(String neighbour, int dakika){
-        //if(komsunumber<komsu.length
-        komsu[komsunumber] = neighbour;
-        this.dakika[komsunumber] = dakika;
-        komsunumber++;
-        //}
+    public String getKomsu(int k) {
+        return komsu[k];
     }
 
-    public void displayCityInfo(){
-        System.out.println(cityname+ " Komsşular: ");
-        for(int i = 0; i<komsunumber; i++){
-            System.out.println(komsu[i]+ " " + dakika[i]);
-        }
-        System.out.println();
+    public int getDakika(int d) {
+        return dakika[d];
     }
-}
+
+    public void addKomsu(String neighbour, int dakika) {
+        if (komsunumber < komsu.length) {
+            komsu[komsunumber] = neighbour;
+            this.dakika[komsunumber] = dakika;
+            komsunumber++;
+            }
+        }
+
+        public void displayCityInfo () {
+            System.out.println(cityname + " Komsşular: ");
+            for (int i = 0; i < komsunumber; i++) {
+                System.out.println(komsu[i] + " " + dakika[i]);
+            }
+            System.out.println();
+        }
+    }

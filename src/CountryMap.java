@@ -27,6 +27,14 @@ public class CountryMap {
         return null;
     }
 
+    public String[] getCityNameler() {
+        return citynameler;
+    }
+
+    public int getCityNumber() {
+        return citynumber;
+    }
+
     public void addInfo(String city1name, String city2name, int dakika) {
         City city1 = getCity(city1name);
         City city2 = getCity(city2name);
