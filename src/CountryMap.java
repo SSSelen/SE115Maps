@@ -45,6 +45,19 @@ public class CountryMap {
         }
     }
 
+    public int getCityNum(String c) {
+        for (int i = 0; i < citynumber; i++) {
+            if (citynameler[i].equals(c)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public City getCityArray(int i) {
+        return cities[i];
+    }
+
     public void displayCountryMapInfo(){
         System.out.println("City Number: "+citynumber);
         for(int i = 0; i <cities.length; i++){
