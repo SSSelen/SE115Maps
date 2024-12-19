@@ -12,6 +12,7 @@ boolean	equalsIgnoreCase(String anotherString)
     private int citynumber;
     private String start;
     private String end;
+    private String[] array;
 
     public WayFinder(){
         this.zaman= zaman;
@@ -20,13 +21,16 @@ boolean	equalsIgnoreCase(String anotherString)
         this.x1=x1;
         this.start=start;
         this.end=end;
+        this.array=array;
     }
 
-    public void shortyol(){
-
+    public void shortyol(String s, String e){
+        array = new String[citynumber];
+        array[0] = s;
+        roads(s, e, array, 0, 0);
     }
 
-    //public yollari arrayle(){}
+    public void roads(String yer, String finish, String[] arr, int roadlength, int now ){}
 
 
 }
