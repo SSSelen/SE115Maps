@@ -14,11 +14,11 @@ boolean	equalsIgnoreCase(String anotherString)
     private String end;
     private String[] array;
 
-    public WayFinder() {
+    public WayFinder(CountryMap x1) {
         this.zaman = zaman;
-        this.citynumber = x1.getCityNumber();
+        this.citynumber = this.x1.getCityNumber();
         this.road = new String[citynumber];
-        this.x1 = x1;
+        this.x1 = this.x1;
         this.start = start;
         this.end = end;
         this.array = array;

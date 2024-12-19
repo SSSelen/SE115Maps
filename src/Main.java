@@ -109,6 +109,10 @@ public class Main {
 
             x1.displayCountryMapInfo();//citydi
 
+            WayFinder x2 = new WayFinder(x1);
+            x2.shortyol(start, end);
+
+
         } catch (Exception ErrorX) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
             System.err.println(linearray[index]+"<Line Number><Error description>" + ErrorX.getMessage());
             System.out.println(ErrorX.getStackTrace());
