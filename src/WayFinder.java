@@ -1,11 +1,5 @@
 public class WayFinder {
-    //valueof? parseınt?
-    /* ?
-    if(arr[1].compareTo[2]==-1){
-    } else if(arr[2].compareTo[3]==-1){}
-    boolean	equals(Object anObject)
-boolean	equalsIgnoreCase(String anotherString)
-     */
+
     private CountryMap x1;
     private int zaman;
     private String[] road;
@@ -15,10 +9,10 @@ boolean	equalsIgnoreCase(String anotherString)
     private String[] array;
 
     public WayFinder(CountryMap x1) {
-        this.zaman = zaman;
-        this.citynumber = this.x1.getCityNumber();
+        this.zaman = -1;
+        this.citynumber = x1.getCityNumber();
         this.road = new String[citynumber];
-        this.x1 = this.x1;
+        this.x1 = x1;
         this.start = start;
         this.end = end;
         this.array = array;
@@ -30,14 +24,14 @@ boolean	equalsIgnoreCase(String anotherString)
         roads(s, e, array, 0, 0);
     }
 
-    public void roads(String yer, String finish, String[] arr, int roadlength, int now) {
+    public void roads(String yer, String finish, String[] array, int roadlength, int now) {
         int citynum = x1.getCityNum(yer);
         if (citynum == -1) {
             return;
         }
 
         if (yer.equals(finish)) {
-            if (zaman == -1 || now <= zaman) {
+            if (zaman == -1 || now < zaman) {
                 zaman = now;
                 for (int i = 0; i <= roadlength; i++) {
                     road[i] = array[i];
@@ -51,7 +45,7 @@ boolean	equalsIgnoreCase(String anotherString)
                     int z = city.getDakika(i);
 
                     if (!control(n, array, roadlength)) {
-                        array[roadlength] = n;
+                        array[roadlength+1] = n;
                         roads(n, finish, array, roadlength + 1, now + zaman);
                     }
                 }
