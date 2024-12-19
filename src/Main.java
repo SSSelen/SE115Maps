@@ -41,6 +41,9 @@ public class Main {
         int dakika = 0;
         int citynumber = 0;
         String[] arr = null;
+        String start = null;
+        String end = null;
+        String[] hedef = null;
 
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
@@ -74,6 +77,12 @@ public class Main {
                 }
             }
 
+            if(reader.hasNextLine()){
+                hedef = reader.nextLine().split(" ");
+                start = hedef[0];
+                end = hedef[1];
+            }
+
             //int line =1;
             reader = new Scanner(Paths.get("src/deneme.txt"));
             while (reader.hasNextLine()) {
@@ -92,7 +101,10 @@ public class Main {
 
 
 
-
+            System.out.println(start);
+            System.out.println(end);
+            System.out.println(hedef[0]);
+            System.out.println(hedef[1]);
             System.out.println("File read is successful!");
 
             x1.displayCountryMapInfo();//citydi
