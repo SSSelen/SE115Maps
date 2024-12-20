@@ -44,7 +44,7 @@ public class WayFinder {
 
                 if (!control(n, array, roadlength)) {
                     array[roadlength+1] = n;
-                    roads(n, finish, array, roadlength + 1, now + zaman);
+                    roads(n, finish, array, roadlength + 1, now + z );
                 }
             }
         }
