@@ -12,7 +12,7 @@ import java.util.Random;
 public class Main {
     /*public static void main(String[] args) throws IOException {
 //throws kullanımı okey miş */
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         /*if(args.length==0){
             System.out.println("Error:1");
@@ -22,7 +22,7 @@ public class Main {
 
          */
 
-        int line = 1; //ARRAYLERİ DE TANIMLASAM
+        int line = 0; //ARRAYLERİ DE TANIMLASAM
         String[] linearray = new String[line];
         int index = 0;
         /*Scanner sc = new Scanner(System.in);
@@ -47,36 +47,49 @@ public class Main {
         try {
             reader = new Scanner(Paths.get("src/deneme.txt"));
             //reader = new Scanner(new File(filename));
+            line=0;
             if (reader.hasNextLine()) {
+                line++;
                 String firstLine = reader.nextLine();
+                if(firstLine==null){
+                    throw new IllegalArgumentException("Şehir eksik");
+                }
                 citynumber = Integer.parseInt(firstLine);
+            } else{
+                throw new IllegalArgumentException("sayısı eksik");
             }
 
             CountryMap x1 = new CountryMap(citynumber);
 
-            if(reader.hasNextLine()){
+            if (reader.hasNextLine()) {
+                line++;
                 String isimler = reader.nextLine();
-                arr= isimler.split(" ");
+                arr = isimler.split(" ");
                 for (int i = 0; i < arr.length; i++) {
                     x1.addCity(i, arr[i]);
                 }
             }
 
-            if(reader.hasNextLine()){
+            if (reader.hasNextLine()) {
+                line++;
                 int yolnumber = Integer.parseInt(reader.nextLine());
-                for(int i = 0; i<yolnumber; i++){
-                    if(reader.hasNextLine()){
+                for (int i = 0; i < yolnumber; i++) {
+                    if (reader.hasNextLine()) {
+                        line++;
                         yol = reader.nextLine().split(" ");
                         city1 = yol[0];
                         city2 = yol[1];
                         dakika = Integer.parseInt(yol[2]);
 
                         x1.addInfo(city1, city2, dakika);
+                    }else{
+                        throw new IllegalArgumentException("Eksik yol");
                     }
                 }
             }
 
-            if(reader.hasNextLine()){
+            if (reader.hasNextLine()) {
+                line++;
                 hedef = reader.nextLine().split(" ");
                 start = hedef[0];
                 end = hedef[1];
@@ -98,49 +111,25 @@ public class Main {
                 index++;
             }
 
-
-
-            System.out.println(start);
-            System.out.println(end);
-            System.out.println(hedef[0]);
-            System.out.println(hedef[1]);
             System.out.println("File read is successful!");
 
-            x1.displayCountryMapInfo();//citydi
+            //x1.displayCountryMapInfo();//citydi
 
             WayFinder x2 = new WayFinder(x1);
             x2.shortyol(start, end, "src/output.txt");
 
             int zaman = x2.getZaman();
             String[] road = x2.getRoad();
-            outputing(zaman, road,"src/output.txt", x1.getCityNumber());
+            outputing(zaman, road, "src/output.txt", x1.getCityNumber());
 
-        } catch (Exception ErrorX) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
-            System.err.println(linearray[index]+"<Line Number><Error description>" + ErrorX.getMessage());
-            System.out.println(ErrorX.getStackTrace());
+        } catch (Exception e) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
+            System.err.println("<"+(line-1) + "><Error description>");//<getMessage.e>?
         } /*catch  (NumberFormatException e){
             System.err.println("Şehir sayısı 0.");
             //aynı dosya isminde var
-        } */finally {
+        } */ finally {
             if (reader != null) {
                 reader.close();
-            }
-        }
-        //burayı sil
-        //append
-        Formatter f = null;
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter("src/deneme.txt", true);
-            f = new Formatter(fw);
-            r = rd.nextInt();
-            f.format("%d", r);
-            fw.close();
-        } catch (Exception e) {
-            System.err.println("Something went wrong.");
-        } finally {
-            if (f != null) {
-                f.close();
             }
         }
     }
