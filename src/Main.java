@@ -156,13 +156,14 @@ public class Main {
                 b += " -> ";
             }
         }
-
+        System.out.println();
         System.out.println("Fastest Way: " + b);
         System.out.println("Total Time: " + zaman + " min");
 
         try (FileWriter writer = new FileWriter(string)) {
-            writer.write("Fastest Way: " + b);
-            writer.write("Total Time: " + zaman + " min");
+            writer.write("Fastest Way: " + b+ "\n");
+            writer.write("Total Time: " + zaman + " min\n");
+            writer.write(" ");
         } catch (Exception e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
