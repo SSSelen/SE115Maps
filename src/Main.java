@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Main {
     /*public static void main(String[] args) throws IOException {
-//throws kullanımı okey mi */
+//throws kullanımı okey miş */
     public static void main(String[] args){
 
         /*if(args.length==0){
@@ -25,7 +25,6 @@ public class Main {
         int line = 1; //ARRAYLERİ DE TANIMLASAM
         String[] linearray = new String[line];
         int index = 0;
-
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Entet file: ");
         String filename = args[0];
@@ -110,8 +109,11 @@ public class Main {
             x1.displayCountryMapInfo();//citydi
 
             WayFinder x2 = new WayFinder(x1);
-            x2.shortyol(start, end);
+            x2.shortyol(start, end, "src/output.txt");
 
+            int zaman = x2.getZaman();
+            String[] road = x2.getRoad();
+            outputing(zaman, road,"src/output.txt", x1.getCityNumber());
 
         } catch (Exception ErrorX) {//IOExceptiondi( boş dosya atarsa)  (6 yol atıyorum ama eskiks yol atarsa da error veiyorum
             System.err.println(linearray[index]+"<Line Number><Error description>" + ErrorX.getMessage());
@@ -124,24 +126,7 @@ public class Main {
                 reader.close();
             }
         }
-
-        //write
-/*
-        Formatter f = null;
-        try {
-            f = new Formatter("src/deneme.txt");
-            r = rd.nextInt();
-            f.format("%d", r);
-        } catch (Exception e) {
-            System.err.println("Something went wrong.");
-        } finally {
-            if (f != null) {
-                f.close();
-            }
-        }
-*/
-
-
+        //burayı sil
         //append
         Formatter f = null;
         FileWriter fw = null;
@@ -157,6 +142,29 @@ public class Main {
             if (f != null) {
                 f.close();
             }
+        }
+    }
+    private static void outputing(int zaman, String[] road, String string, int citynumber) {
+        if (zaman == -1) {
+            System.out.println("No path exists.");
+            return;
+        }
+        String b = "";
+        for (int i = 0; i < citynumber && road[i] != null; i++) {
+            b += road[i];
+            if (i + 1 < citynumber && road[i + 1] != null) {
+                b += " -> ";
+            }
+        }
+
+        System.out.println("Fastest Way: " + b);
+        System.out.println("Total Time: " + zaman + " min");
+
+        try (FileWriter writer = new FileWriter(string)) {
+            writer.write("Fastest Way: " + b);
+            writer.write("Total Time: " + zaman + " min");
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e.getMessage());
         }
     }
 }

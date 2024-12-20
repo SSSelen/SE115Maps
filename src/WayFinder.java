@@ -18,13 +18,13 @@ public class WayFinder {
         this.array = array;
     }
 
-    public void shortyol(String s, String e) {
+    public void shortyol(String s, String e, String string) {
         array = new String[citynumber];
         array[0] = s;
         roads(s, e, array, 0, 0);
     }
 
-    public void roads(String yer, String finish, String[] array, int roadlength, int now) {
+    private void roads(String yer, String finish, String[] array, int roadlength, int now) {
         int citynum = x1.getCityNum(yer);
         if (citynum == -1) {
             return;
@@ -37,30 +37,37 @@ public class WayFinder {
                     road[i] = array[i];
                 }
             }
-            } else {
-                City city = x1.getCityArray(citynum);
+        } else {
+            City city = x1.getCityArray(citynum);
 
-                for (int i = 0; i < city.getKomsuNumber(); i++) {
-                    String n = city.getKomsu(i);
-                    int z = city.getDakika(i);
+            for (int i = 0; i < city.getKomsuNumber(); i++) {
+                String n = city.getKomsu(i);
+                int z = city.getDakika(i);
 
-                    if (!control(n, array, roadlength)) {
-                        array[roadlength+1] = n;
-                        roads(n, finish, array, roadlength + 1, now + zaman);
-                    }
+                if (!control(n, array, roadlength)) {
+                    array[roadlength+1] = n;
+                    roads(n, finish, array, roadlength + 1, now + zaman);
                 }
             }
-            array[roadlength] = null;
         }
+        array[roadlength] = null;
+    }
 
-        public boolean control(String city, String[] array, int roadlength){
-            for(int i = 0;i<=roadlength; i++){
-                if(array[i] !=null && array[i].equals(city)){
-                    return true;
-                }
+    private boolean control(String city, String[] array, int roadlength){
+        for(int i = 0;i<=roadlength; i++){
+            if(array[i] !=null && array[i].equals(city)){
+                return true;
             }
-            return false;
         }
+        return false;
+    }
+
+    public int getZaman() {
+        return zaman;
+    }
+
+    public String[] getRoad() {
+        return road;
+    }
 }
-
 
