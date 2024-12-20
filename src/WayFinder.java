@@ -4,23 +4,17 @@ public class WayFinder {
     private int zaman;
     private String[] road;
     private int citynumber;
-    private String start;
-    private String end;
-    private String[] array;
+
 
     public WayFinder(CountryMap x1) {
         this.zaman = -1;
         this.citynumber = x1.getCityNumber();
         this.road = new String[citynumber];
         this.x1 = x1;
-        this.start = start;
-        this.end = end;
-        this.array = array;
-        //değişiklik?
     }
 
     public void shortyol(String s, String e, String string) {
-        array = new String[citynumber];
+        String[] array = new String[citynumber];
         array[0] = s;
         roads(s, e, array, 0, 0);
     }
@@ -36,6 +30,9 @@ public class WayFinder {
                 zaman = now;
                 for (int i = 0; i <= roadlength; i++) {
                     road[i] = array[i];
+                }
+                for (int i = roadlength + 1; i < road.length; i++) {
+                    road[i] = null;
                 }
             }
         } else {
