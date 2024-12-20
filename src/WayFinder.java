@@ -16,6 +16,7 @@ public class WayFinder {
         this.start = start;
         this.end = end;
         this.array = array;
+        //değişiklik?
     }
 
     public void shortyol(String s, String e, String string) {
