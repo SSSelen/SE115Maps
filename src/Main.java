@@ -57,43 +57,43 @@ public class Main {
                 return;
             }
 
-            //try {
+            try {
                 if (reader.hasNextLine()) {
                     line++;
                     int yolnumber = Integer.parseInt(reader.nextLine());
-                    /*if (yolnumber <= 0) {
+                    if (yolnumber <= 0) {
                         System.err.println("<Error line:" + line + "><Error:Number of roads must be a positive number>");
                         return;
                     }
 
-                     */
                     for (int i = 0; i < yolnumber; i++) {
                         if (reader.hasNextLine()) {
                             line++;
                             yol = reader.nextLine().split(" ");
+                            if (yol.length != 3) {
+                                System.err.println("<Error line:" + (line-1) + "><Error:The number of declared roads does not match>");
+                                return;
+                            }
                             city1 = yol[0];
                             city2 = yol[1];
                             dakika = Integer.parseInt(yol[2]);
                             if(yol[2]==null){
                                 System.err.println("<Error line:"+line+"><Error:Absent Road>");
                             }
-                            /*if (yol.length != 3) {
-                                System.err.println("<Error line:" + line + "><Error:Invalid road format. Each road should have 3 parts>");
-                                return;
-                            }
 
-                             */
 
                             x1.addInfo(city1, city2, dakika);
+                        }else {
+                            throw new IllegalArgumentException("<Error line:"+line+"><Error:Missing Road Info>");
                         }
                     }
                 }
-            /*} catch (Exception e) {
+            } catch (Exception e) {
                 System.err.println("<Error line:" + line + "><Error:Failed to process road data>");
                 return;
             }
 
-             */
+
 
             try {
                 if (reader.hasNextLine()) {
@@ -105,6 +105,21 @@ public class Main {
                     }
                     start = hedef[0];
                     end = hedef[1];
+
+                    boolean startcont = true;
+                    boolean endcont = true;
+                    for (int i = 0; i < arr.length; i++) {
+                        if (arr[i].equals(start)) {
+                            startcont = false;
+                        }
+                        if (arr[i].equals(end)) {
+                            endcont = false;
+                        }
+                    }
+                    if (startcont == true || endcont == true) {
+                        System.err.println("<Error line:" + line + "><Error: >");
+                        return;
+                    }
                 }
             } catch (Exception e) {
                 System.err.println("<Error line:" + line + "><Error:Failed to process start and end cities>");
