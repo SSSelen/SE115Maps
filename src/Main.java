@@ -100,7 +100,7 @@ public class Main {
                     line++;
                     hedef = reader.nextLine().split(" ");
                     if (hedef.length != 2) {
-                        System.err.println("<Error line:" + line + "><Error:Start and end cities should be two>");
+                        System.err.println("<Error line:" + line + "><Error:Start and end cities should be two labels>");
                         return;
                     }
                     start = hedef[0];
@@ -117,7 +117,7 @@ public class Main {
                         }
                     }
                     if (startcont == true || endcont == true) {
-                        System.err.println("<Error line:" + line + "><Error: >");
+                        System.err.println("<Error line:" + line + "><Error:Contains a city that does not exist>");
                         return;
                     }
                 }
