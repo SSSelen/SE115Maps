@@ -3,17 +3,15 @@ import java.util.Scanner;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.util.Formatter;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         if(args.length==0){
-            System.err.println("<Error from the text file>");
+            System.out.println("<Error from the text file>");
             return;
         }
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the file: ");
-        String filename = args[0];
-        filename=sc.next();
 
         Scanner reader = null;
         int line = 0;
@@ -27,6 +25,9 @@ public class Main {
         String start = null;
         String end = null;
         String[] hedef = null;
+
+        String filename = args[0];
+
 
 
 
@@ -89,6 +90,24 @@ public class Main {
                             }
                             city1 = yol[0];
                             city2 = yol[1];
+
+                            boolean city1cont = false;
+                            boolean city2cont = false;
+
+                            for (int j = 0; j < arr.length; j++) {
+                                if (arr[j].equals(city1)) {
+                                    city1cont = true;
+                                }
+                                if (arr[j].equals(city2)) {
+                                    city2cont = true;
+                                }
+                            }
+
+                            if (!city1cont || !city2cont) {
+                                System.err.println("<Error line:" + line + "><Error:Unknown city>");
+                                return;
+                            }
+
                             if (city1.equals("") || city2.equals("")) {
                                 System.err.println("<Error line:" + line + "><Error:Missing city label>");
                                 return;
@@ -167,11 +186,11 @@ public class Main {
             System.out.println("File read is successful!");
 
             WayFinder x2 = new WayFinder(x1);
-            x2.shortyol(start, end, "src/output.txt");
+            x2.shortyol(start, end, "output.txt");
 
             int zaman = x2.getZaman();
             String[] road = x2.getRoad();
-            outputing(zaman, road, "src/output.txt", x1.getCityNumber());
+            outputing(zaman, road, "output.txt", x1.getCityNumber());
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
