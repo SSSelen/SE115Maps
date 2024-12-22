@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -5,6 +6,15 @@ import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
+        if(args.length==0){
+            System.err.println("<Error from the text file>");
+            return;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the file: ");
+        String filename = args[0];
+        filename=sc.next();
+
         Scanner reader = null;
         int line = 0;
         String[] linearray = null;
@@ -18,8 +28,11 @@ public class Main {
         String end = null;
         String[] hedef = null;
 
+
+
         try {
-            reader = new Scanner(Paths.get("src/deneme.txt"));
+            //reader = new Scanner(Paths.get("src/deneme.txt"));
+            reader = new Scanner(new File(filename));
             line = 0;
 
             try {
@@ -69,23 +82,27 @@ public class Main {
                     for (int i = 0; i < yolnumber; i++) {
                         if (reader.hasNextLine()) {
                             line++;
-                            yol = reader.nextLine().split(" ");
+                            yol = reader.nextLine().trim().split("\\s+");
                             if (yol.length != 3) {
                                 System.err.println("<Error line:" + (line-1) + "><Error:The number of declared roads does not match>");
                                 return;
                             }
                             city1 = yol[0];
                             city2 = yol[1];
-                            dakika = Integer.parseInt(yol[2]);
-                            if(yol[2]==null){
-                                System.err.println("<Error line:"+line+"><Error:Absent Road>");
+                            if (city1.equals("") || city2.equals("")) {
+                                System.err.println("<Error line:" + line + "><Error:Missing city label>");
+                                return;
                             }
-
+                            dakika = Integer.parseInt(yol[2]);
+                            if (dakika <= 0) {
+                                System.err.println("<Error line:" + line + "><Error:Road time must be a positive number>");
+                                return;
+                            }
 
                             x1.addInfo(city1, city2, dakika);
                         }else {
-                            throw new IllegalArgumentException("<Error line:"+line+"><Error:Missing Road Info>");
-                        }
+                            System.err.println("<Error line:" + line + "><Error:Missing road information>");
+                            return;                        }
                     }
                 }
             } catch (Exception e) {
@@ -99,12 +116,20 @@ public class Main {
                 if (reader.hasNextLine()) {
                     line++;
                     hedef = reader.nextLine().split(" ");
+                    if (hedef.length == 1) {
+                        System.err.println("<Error line:" + line + "><Error:Starting city and ending city must be two labels>");
+                        return;
+                    }
                     if (hedef.length != 2) {
-                        System.err.println("<Error line:" + line + "><Error:Start and end cities should be two labels>");
+                        System.err.println("<Error line:" + line + "><Error:The number of declared roads does not match>");
                         return;
                     }
                     start = hedef[0];
                     end = hedef[1];
+                    if (start.equals(end)) {
+                        System.err.println("<Error line:" + line + "><Error:Starting city and ending city is same>");
+                        return;
+                    }
 
                     boolean startcont = true;
                     boolean endcont = true;
@@ -120,13 +145,17 @@ public class Main {
                         System.err.println("<Error line:" + line + "><Error:Contains a city that does not exist>");
                         return;
                     }
-                }
+                }else {
+                        System.err.println("<Error line:" + (line+1) + "><Error:There is no starting city and ending city>");
+                        return;
+                    }
             } catch (Exception e) {
                 System.err.println("<Error line:" + line + "><Error:Failed to process start and end cities>");
                 return;
             }
 
-            reader = new Scanner(Paths.get("src/deneme.txt"));
+            //reader = new Scanner(Paths.get("src/deneme.txt"));
+            reader = new Scanner(new File(filename));
             while (reader.hasNextLine()) {
                 reader.nextLine();
                 line++;
@@ -134,13 +163,6 @@ public class Main {
 
             reader.close();
 
-            linearray = new String[line];
-            reader = new Scanner(Paths.get("src/deneme.txt"));
-            int index = 0;
-            while (reader.hasNextLine()) {
-                linearray[index] = reader.nextLine();
-                index++;
-            }
 
             System.out.println("File read is successful!");
 
