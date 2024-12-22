@@ -9,7 +9,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         if(args.length==0){
-            System.out.println("<Error from the text file>");
+            System.out.println("<Error:Start it with terminal using: java Main.java (filename).txt>");
             return;
         }
 
